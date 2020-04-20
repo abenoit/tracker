@@ -1,23 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:tracker/components/noActivity.dart';
+import 'package:tracker/components/activityMain.dart';
 
-class Main extends StatelessWidget {
-  Main({Key key, this.title}) : super(key: key);
+import 'addActivity.dart';
+
+class Home extends StatefulWidget {
+  Home({Key key, this.title}) : super(key: key);
   final String title;
 
-  void _addActivity() {}
+  @override
+  HomeState createState() => HomeState();
+}
+
+class HomeState extends State<Home> {
+  void _addActivity() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddActivity()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            NoActivity(key: key),
+            ActivityMain(),
           ],
         ),
       ),
@@ -25,7 +37,7 @@ class Main extends StatelessWidget {
         onPressed: _addActivity,
         tooltip: 'Add Activity',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

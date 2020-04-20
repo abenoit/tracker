@@ -16,7 +16,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Tracker',
       theme: appTheme(),
-      home: Main(title: 'Tracker'),
+      home: Home(title: 'Tracker'),
     );
   }
 }
